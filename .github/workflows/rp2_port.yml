@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        board: [PICO]
+        board: [RPI_PICO]
     steps:
     - uses: actions/checkout@v4
     - name: arm-none-eabi-gcc
