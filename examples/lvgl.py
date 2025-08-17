@@ -1,6 +1,6 @@
-'''
+"""
 A basic example that registers SDL display and input drivers and starts the event loop
-'''
+"""
 
 import time
 
@@ -11,8 +11,8 @@ lv.init()
 
 el = event_loop()
 
-WIDTH=480
-HEIGHT=320
+WIDTH = 480
+HEIGHT = 320
 
 disp_drv = lv.sdl_window_create(WIDTH, HEIGHT)
 mouse = lv.sdl_mouse_create()
