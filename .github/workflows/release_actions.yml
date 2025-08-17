@@ -7,9 +7,9 @@ on:
 
 jobs:
   publish-docker-image:
-    permissions:  
-      contents: read  
-      packages: write 
+    permissions:
+      contents: read
+      packages: write
     env:
       IMAGE_NAME: ghcr.io/${{ github.repository }}
     runs-on: ubuntu-latest
@@ -38,13 +38,15 @@ jobs:
             ${{ env.IMAGE_NAME }}:${{ steps.get_version.outputs.VERSION }}
 
   push-latest-tag:
-    permissions:  
-      contents: write 
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     needs: publish-docker-image
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Get version
         id: get_version
@@ -52,7 +54,12 @@ jobs:
 
       - name: Create and push tag
         run: |
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-          git tag ${{ steps.get_version.outputs.VERSION }}
-          git push origin ${{ steps.get_version.outputs.VERSION }}
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git fetch --tags --force
+          if git rev-parse -q --verify "refs/tags/${{ steps.get_version.outputs.VERSION }}"; then
+            echo "Tag ${{ steps.get_version.outputs.VERSION }} already exists; skipping."
+          else
+            git tag ${{ steps.get_version.outputs.VERSION }}
+            git push origin ${{ steps.get_version.outputs.VERSION }}
+          fi
