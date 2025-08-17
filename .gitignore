@@ -24,3 +24,6 @@ user.props
 
 # MacOS desktop metadata files
 .DS_Store
+
+# User Modules own sub Modules
+user-modules/lv_binding_micropython/*
