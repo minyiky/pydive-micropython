@@ -2,8 +2,13 @@ name: Check code formatting
 
 on:
   push:
-    branches: 
+    branches:
       - master
+    paths:
+      - **/*.c
+      - **/*.cpp
+      - **/*.h
+      - **/*.hpp
   pull_request:
 
 concurrency:
