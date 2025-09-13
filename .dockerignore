@@ -1,0 +1,27 @@
+# Ignore IDE and editor files
+.vscode/
+.idea/
+*.pyc
+*.pyo
+
+# Ignore other unnecessary files
+*.gitignore
+*.gitattributes
+README.md
+LICENSE
+
+**/build-*
+
+docs/
+**/docs/
+
+examples/
+**/examples/
+
+tests/
+**/tests/
+
+scripts/
+**/scripts/
+
+user_modules/

@@ -18,6 +18,9 @@ tests/ports/unix/ffi_lib.so
 # Python cache files
 __pycache__/
 
+# IDE settings
+.vscode/
+
 # Customized Makefile/project overrides
 GNUmakefile
 user.props

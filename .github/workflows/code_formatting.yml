@@ -1,6 +1,21 @@
 name: Check code formatting
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "**/*.c"
+      - "**/*.cpp"
+      - "**/*.h"
+      - "**/*.hpp"
+  pull_request:
+    paths:
+      - "**/*.c"
+      - "**/*.cpp"
+      - "**/*.h"
+      - "**/*.hpp"
+
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -8,7 +23,7 @@ concurrency:
 
 jobs:
   code-formatting:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v6
     - uses: actions/setup-python@v6
