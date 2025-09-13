@@ -7,6 +7,7 @@ on:
       - 'tools/**'
       - 'py/**'
       - 'extmod/**'
+      - 'user_modules/**'
       - 'shared/**'
       - 'lib/**'
       - 'ports/bare-arm/**'
@@ -23,7 +24,7 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
       with:

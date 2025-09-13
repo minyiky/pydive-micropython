@@ -1,0 +1,11 @@
+name: PR Hygiene
+on:
+  pull_request:
+
+jobs:
+  check-version-update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check the version has been updated
+        run: make check-version-update
