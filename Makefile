@@ -1,7 +1,7 @@
 .PHONY: run docker-build
 
 SHELL := /bin/bash
-VERSION:=0.5.0
+VERSION:=0.5.1
 LATEST_TAG = $(eval LATEST_TAG := $(shell \
     git ls-remote --tags origin \
     | awk -F/ '{print $$3}' \
